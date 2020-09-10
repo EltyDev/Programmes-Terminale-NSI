@@ -14,15 +14,15 @@ class Liste: #création de la classe
 
 #ajouter un élément à la liste
     def ajouter(self, element):
-        suivant = self.list #suivant devien la liste
+        suivant = self.list #suivant devient la liste
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
             suivant = suivant[1] #suivant avance dans la liste chainée
         suivant[1] = [element, None] #quand suivant à atteind le None, il remplace le None par l'élément
 
-#inserer
+#inserer un élément dans une liste à un indice donné
 def inserer(self, index, element):
-        suivant = self.list
-        for _ in range(index-1):
+        suivant = self.list #suivant devient la liste
+        for _ in range(index-1): #on fait
             suivant = suivant[1]
         suivant[1] = [element, suivant[1]]
 
