@@ -28,36 +28,40 @@ class Liste: #création de la classe
 
 #acceder à un rang particulier
     def acceder(self, index):
-        suivant = self.list #suivant deviens la liste
+        suivant = self.list #suivant devient la liste
         for _ in range(index): #on atteind le bon rang
             suivant = suivant[1]
-        print(suivant[0])
         return suivant[0]
 
+#longueur de la liste avec len
     def __len__(self):
-        suivant = self.list
-        i = 0
-        if self.list[0] == None:
-            return i
-        while suivant[1] != None:
-            i +=  1
-            suivant = suivant[1]
-        return i+1
+        suivant = self.list #suivant devient la liste
+        i = 0 #on crée un indice pour compter
+        if self.list[0] == None: #si le première élément du duo est vaut None
+            return i #la liste fait i éléments
+        else:
+            while suivant[1] != None: #sinon, tant que la dervière valeur du duo n'est pas nulle
+                i +=  1 # i prend un point en plus
+                suivant = suivant[1] #et on avance dans la liste
+        return i+1 # et on retourne i+1
 
-    def remove(self, index):
-        suivant = self.list
-        for _ in range(index-1):
-            suivant = suivant[1]
-        suivant[1] =  suivant[1][1]
+#supprimer un valeur à un indice donné
+    def supprimer_ind(self, index):
+        suivant = self.list #suivant devient la liste
+        for _ in range(index-1): #on se déplace
+            suivant = suivant[1] #jusqu'à l'élément que l'on veut supprimer
+        suivant[1] =  suivant[1][1] #et on l'écrase avec la valeur suivante
 
-    def replace(self, index, value):
-        suivant = self.list
-        for _ in range(index):
-            suivant = suivant[1]
-        suivant[0] = value
+#pour remplacer la liste
+    def remplacer(self, index, valeur):
+        suivant = self.list #On lui donne la valeur de la liste
+        for _ in range(index): #on se déplace
+            suivant = suivant[1] #jusqu'à l'élément que l'on veut modifier
+        suivant[0] = valeur #et on modifie la valeur
 
-    def clear(self):
-        self.list = [None, None]
+#on vide la liste
+def vider(self):
+    self.list = [None, None] #on remet à zéro la valeur de la liste
 
     def __repr__(self):
         suivant = self.list #suivant devient la liste
