@@ -22,15 +22,17 @@ class Liste: #création de la classe
 #inserer un élément dans une liste à un indice donné
 def inserer(self, index, element):
         suivant = self.list #suivant devient la liste
-        for _ in range(index-1): #on fait
-            suivant = suivant[1]
-        suivant[1] = [element, suivant[1]]
+        for _ in range(index-1): #on atteind le
+            suivant = suivant[1] #bon rang
+        suivant[1] = [element, suivant[1]] #on insère le bon élément à la bonne place
 
-    def get(self, index):
-        suivant = self.list
-        for _ in range(index):
+#acceder à un rang particulier
+    def acceder(self, index):
+        suivant = self.list #suivant deviens la liste
+        for _ in range(index): #on atteind le bon rang
             suivant = suivant[1]
         print(suivant[0])
+        return suivant[0]
 
     def __len__(self):
         suivant = self.list
