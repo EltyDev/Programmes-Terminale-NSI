@@ -1,45 +1,45 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-#
-#  listes_chainees.py
-#  
+tab = [None, None]	
+	
+def ajouter(tab, element):
+    next = tab #On lui donne la valeur de la liste
+    while next[1] != None: #On incrémente i jusqu'a qu'on trouve le "None" du dernier tableau
+        next = next[1] #A chaque fois on prend le tableau suivant
+    next[1] = [element, None] #Et donc on crée le nouveau tableau avec la valeur à la place de "None"
 
-############################################
-# fonctions pour l'interface liste chaînée #
-############################################
+def inserer(tab, index, element):
+    next = tab #On lui donne la valeur de la liste
+    for _ in range(index-1): #On refait l'opération jusqu'à l'index voulu
+        next = next[1] #A chaque fois on prend le tableau suivant
+    next[1] = [element, next[1]] #On redéfinis la valeur à celle donné
 
-# ajouter une valeur à la liste chaînée
-def ajouter(liste,valeur):
-	if liste[0]==None and liste[1]==None:	# si la liste chaînée est vide
-		liste[0]=valeur
-	else:
-		pointeur=liste
-		while pointeur[1]!=None:	# on se place en fin de liste chaînée
-			pointeur=pointeur[1]
-		pointeur[1]=[valeur,None]	# on ajoute en fin de liste chaînée
-		
-# accéder à l'élément d'indice i (0 à longueur-1)
-def acceder(liste,indice):
-	i=0
-	pointeur=liste
-	valeur=None
-	if pointeur[0]!=None:	# si liste non vide
-		while pointeur[1]!=None and i!=indice:	# tant que indice ou fin de liste pas atteint
-			i=i+1
-			pointeur=pointeur[1]
-		if i==indice:
-			valeur=pointeur[0]
-	return valeur
+def acceder(tab, index):
+    next = tab #On lui donne la valeur de la liste
+    for _ in range(index): #On refait l'opération jusqu'à l'index voulu
+        next = next[1] #A chaque fois on prend le tableau suivant
+    print(next[0]) #On affiche la valeur
 
-#####################################
-# programme pour tester l'interface #
-#####################################
+def longueur(tab):
+    next = tab #On lui donne la valeur de la liste
+    i = 0 #Correspondra à la taille
+    tab[0] == None: #Si la liste est vide
+        return i
+    while next[1] != None: #On incrémente i jusqu'a qu'on trouve le "None" de la dernière valeur
+        i += 1
+        next = next[1] #A chaque fois on prend le tableau suivant
+    return i+1 #On ajoute 1 car il y a une valeur en trop
+    
+def supprimer_ind(tab, index):
+    next = tab #On lui donne la valeur de la liste
+    for _ in range(index-1): #On continue jusqu'à l'index-1 donné pour avoir le tableau juste avant celui de l'index
+         next = next[1] #A chaque fois on prend le tableau suivant
+    next[1] =  next[1][1] : #Et donc remet à l'ancienne valeur la suite de la liste
 
-listec=[None,None]	# initialisation liste chaînée (constructeur)
-ajouter(listec,"premier")
-ajouter(listec,"second")
-ajouter(listec,"troisième")
-print(listec)
-print(acceder(listec,2))
+def modifier(tab, index, value):
+    next = tab #On lui donne la valeur de la liste
+    for _ in range(index): #On continue jusqu'à l'index donné
+        next = next[1] #A chaque fois on prend le tableau suivant
+    next[0] = value #Et donc on donne à l'index donné, la valeur donné
 
+def vider(tab):
+    tab = [None, None] #Je remet les valeurs initiales
 
