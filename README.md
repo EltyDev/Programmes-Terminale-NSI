@@ -1,3 +1,3 @@
 # Programmes
 
-Mes programmes fait en terminal
+Mes programmes fait en terminale
