@@ -44,6 +44,12 @@ class Liste:
             next = next[1]
         next[1] =  next[1][1]
 
+    def replace(self, index, value):
+        next = self.list
+        for _ in range(index):
+            next = next[1]
+        next[0] = value
+
     def clear(self):
         self.list = [None, None]
 
