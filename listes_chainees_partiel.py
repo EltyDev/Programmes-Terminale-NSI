@@ -42,11 +42,16 @@ def supprimer_ind(tab, index):
 		next[1] = next[1][1] #Et donc remet à l'ancienne valeur la suite de la liste
 
 def supprimer_val(tab, valeur):
+    old = None
     next = tab #On lui donne la valeur de la liste
     while next[0] != valeur:
         old = next
         next = next[1]
-    old[1] = next[1]
+    if old == None:
+        next[0] = next[1][0]
+        next[1] = next[1][1]
+    else:
+        old[1] = next[1]
 
 def modifier(tab, index, value):
     next = tab #On lui donne la valeur de la liste
@@ -59,15 +64,9 @@ def vider(tab):
 
 ajouter(tab,5)
 ajouter(tab,2)
+ajouter(tab,4)
+ajouter(tab, 9)
 print(tab)
-inserer(tab, 1, 3)
+supprimer_val(tab,4)
 print(tab)
-acceder(tab,1)
-print(longueur(tab))
-supprimer_ind(tab,1)
-print(tab)
-supprimer_val(tab,2)
-print(tab)
-modifier(tab, 0, 2)
-vider(tab)
-print(tab)
+
