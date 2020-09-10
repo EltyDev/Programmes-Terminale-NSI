@@ -1,54 +1,58 @@
-class Liste:
+class Liste: #création de la classe
 
+
+#initialisation de l'objet
     def __init__(self, *elements):
-        self.list = [None, None]
-        for element in elements:
-            if self.list[0] == None:
-                self.list[0] = element
-                next = self.list
+        self.list = [None, None] #inititialisation de la liste
+        for element in elements: #pour chaque élémment de la liste
+            if self.list[0] == None: #si le 1er élément la liste est vide
+                self.list[0] = element #le 1er élement de la liste devient élément
+                suivant = self.list #et suivant deviens la liste
             else:
-                next[1] = [element, None]
-                next = next[1]
-    
-    def add(self, element):
-        next = self.list
-        while next[1] != None:
-            next = next[1]
-        next[1] = [element, None]
+                suivant[1] = [element, None] #sinon, le 2e élément de la liste devient [élément, None]
+                suivant = suivant[1] #et suivant avance dans la liste chainée
 
-    def insert(self, index, element):
-        next = self.list
+#ajouter un élément à la liste
+    def ajouter(self, element):
+        suivant = self.list #suivant devien la liste
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        suivant[1] = [element, None] #quand suivant à atteind le None, il remplace le None par l'élément
+
+#inserer
+def inserer(self, index, element):
+        suivant = self.list
         for _ in range(index-1):
-            next = next[1]
-        next[1] = [element, next[1]]
+            suivant = suivant[1]
+        suivant[1] = [element, suivant[1]]
 
     def get(self, index):
-        next = self.list
+        suivant = self.list
         for _ in range(index):
-            next = next[1]
-        print(next[0])
+            suivant = suivant[1]
+        print(suivant[0])
 
     def __len__(self):
-        next = self.list
+        suivant = self.list
         i = 0
         if self.list[0] == None:
             return i
-        while next[1] != None:
+        while suivant[1] != None:
             i +=  1
-            next = next[1]
+            suivant = suivant[1]
         return i+1
-    
+
     def remove(self, index):
-        next = self.list
+        suivant = self.list
         for _ in range(index-1):
-            next = next[1]
-        next[1] =  next[1][1]
+            suivant = suivant[1]
+        suivant[1] =  suivant[1][1]
 
     def replace(self, index, value):
-        next = self.list
+        suivant = self.list
         for _ in range(index):
-            next = next[1]
-        next[0] = value
+            suivant = suivant[1]
+        suivant[0] = value
 
     def clear(self):
         self.list = [None, None]
