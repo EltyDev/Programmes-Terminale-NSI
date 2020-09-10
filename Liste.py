@@ -59,6 +59,18 @@ class Liste: #création de la classe
             suivant = suivant[1] #jusqu'à l'élément que l'on veut modifier
         suivant[0] = valeur #et on modifie la valeur
 
+    def supprimer_val(self, valeur):
+        ancien = None
+        suivant = self.list #On lui donne la valeur de la liste
+        while suivant[0] != valeur: #tant que la valeur de suivant[0] n'est pas égale à la valeur demandée,
+            ancien = suivant #on sauvegarde suivant
+            suivant = suivant[1] #et on avance dans la liste
+        if ancien == None: #si ancien est vide, alors on supprime la premiève valeur
+            suivant[0] = suivant[1][0]
+            suivant[1] = suivant[1][1]
+        else:
+            ancien[1] = suivant[1] #sinon, on remplace ancien par suivant[1]
+
 #on vide la liste
 def vider(self):
     self.list = [None, None] #on remet à zéro la valeur de la liste
@@ -68,6 +80,6 @@ def vider(self):
         objet = "|"
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
             objet += str(suivant[0]) + ", "
-            suivant = suivant[1] #suivant avance dans la liste chainée 
+            suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
