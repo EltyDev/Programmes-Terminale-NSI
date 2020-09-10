@@ -20,7 +20,7 @@ class Liste: #création de la classe
         suivant[1] = [element, None] #quand suivant à atteind le None, il remplace le None par l'élément
 
 #inserer un élément dans une liste à un indice donné
-def inserer(self, index, element):
+    def inserer(self, index, element):
         suivant = self.list #suivant devient la liste
         for _ in range(index-1): #on atteind le
             suivant = suivant[1] #bon rang
@@ -60,4 +60,10 @@ def inserer(self, index, element):
         self.list = [None, None]
 
     def __repr__(self):
-        return f'{self.list}'
+        suivant = self.list #suivant devient la liste
+        objet = "|"
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            objet += str(suivant[0]) + ", "
+            suivant = suivant[1] #suivant avance dans la liste chainée 
+        objet += str(suivant[0]) + "|"
+        return f'{objet}'
