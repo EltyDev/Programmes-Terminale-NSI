@@ -48,9 +48,13 @@ class Liste: #création de la classe
 #supprimer un valeur à un indice donné
     def supprimer_ind(self, index):
         suivant = self.list #suivant devient la liste
-        for _ in range(index-1): #on se déplace
-            suivant = suivant[1] #jusqu'à l'élément que l'on veut supprimer
-        suivant[1] =  suivant[1][1] #et on l'écrase avec la valeur suivante
+        if index == 0:
+            suivant[0] = suivant[1][0]
+            suivant[1] = suivant[1][1]
+        else:
+            for _ in range(index-1): #on se déplace
+                suivant = suivant[1] #jusqu'à l'élément que l'on veut supprimer
+            suivant[1] =  suivant[1][1] #et on l'écrase avec la valeur suivante
 
 #pour remplacer la liste
     def remplacer(self, index, valeur):
@@ -71,9 +75,9 @@ class Liste: #création de la classe
         else:
             ancien[1] = suivant[1] #sinon, on remplace ancien par suivant[1]
 
-#on vide la liste
-def vider(self):
-    self.list = [None, None] #on remet à zéro la valeur de la liste
+    #on vide la liste
+    def vider(self):
+        self.list = [None, None] #on remet à zéro la valeur de la liste
 
     def __repr__(self):
         suivant = self.list #suivant devient la liste
