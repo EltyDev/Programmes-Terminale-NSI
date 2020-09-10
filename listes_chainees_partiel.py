@@ -61,11 +61,3 @@ def modifier(tab, index, value):
 
 def vider(tab):
     tab = [None, None] #Je remet les valeurs initiales
-
-ajouter(tab,5)
-ajouter(tab,2)
-ajouter(tab,4)
-ajouter(tab, 9)
-print(tab)
-supprimer_val(tab,4)
-print(tab)
