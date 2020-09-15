@@ -87,3 +87,13 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
+    
+    def __str__(self):
+        suivant = self.list #suivant devient la liste
+        objet = "|"
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            objet += str(suivant[0]) + ", "
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        objet += str(suivant[0]) + "|"
+        return f'{objet}'
+    
