@@ -82,6 +82,8 @@ class Liste: #création de la classe
     def __repr__(self):
         suivant = self.list #suivant devient la liste
         objet = "|"
+        if self.list == [None, None]:
+            return f'{objet}{self.list[0]}, {self.list[1]}{objet}'
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
             objet += str(suivant[0]) + ", "
             suivant = suivant[1] #suivant avance dans la liste chainée
@@ -91,6 +93,8 @@ class Liste: #création de la classe
     def __str__(self):
         suivant = self.list #suivant devient la liste
         objet = "|"
+        if self.list == [None, None]:
+            return f'{objet}{self.list[0]}, {self.list[1]}{objet}'
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
             objet += str(suivant[0]) + ", "
             suivant = suivant[1] #suivant avance dans la liste chainée
