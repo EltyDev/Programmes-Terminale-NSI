@@ -5,12 +5,21 @@ class Liste: #création de la classe
     def __init__(self, *elements):
         self.list = [None, None] #inititialisation de la liste
         for element in elements: #pour chaque élémment de la liste
-            if self.list[0] == None: #si le 1er élément la liste est vide
-                self.list[0] = element #le 1er élement de la liste devient élément
-                suivant = self.list #et suivant deviens la liste
+            if type(element) == list:
+                for element1 in element:
+                    if self.list[0] == None: #si le 1er élément la liste est vide
+                        self.list[0] = element1 #le 1er élement de la liste devient élément
+                        suivant = self.list #et suivant deviens la liste
+                    else:
+                        suivant[1] = [element1, None] #sinon, le 2e élément de la liste devient [élément, None]
+                        suivant = suivant[1] #et suivant avance dans la liste chainée
             else:
-                suivant[1] = [element, None] #sinon, le 2e élément de la liste devient [élément, None]
-                suivant = suivant[1] #et suivant avance dans la liste chainée
+                if self.list[0] == None: #si le 1er élément la liste est vide
+                    self.list[0] = element #le 1er élement de la liste devient élément
+                    suivant = self.list #et suivant deviens la liste
+                else:
+                    suivant[1] = [element, None] #sinon, le 2e élément de la liste devient [élément, None]
+                    suivant = suivant[1] #et suivant avance dans la liste chainée
 
 #ajouter un élément à la liste
     def ajouter(self, element):
@@ -79,6 +88,15 @@ class Liste: #création de la classe
     def vider(self):
         self.list = [None, None] #on remet à zéro la valeur de la liste
 
+    def copie(self):
+        tab = []
+        suivant = self.list #suivant devient la liste
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            tab.append(suivant[0])
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        tab.append(suivant[0])
+        return Liste(tab)
+
     def __repr__(self):
         suivant = self.list #suivant devient la liste
         objet = "|"
@@ -100,4 +118,11 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
-    
+
+    def __add__(self, x):
+        tab = self.copie()
+        suivant = tab.list #suivant devient la liste
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        suivant[1] = x.list  #quand suivant à atteind le None, il remplace le dernier élement par la ouvelle liste
+        return tab #On retourne la valeur
