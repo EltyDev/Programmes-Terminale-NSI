@@ -1,5 +1,6 @@
 class Liste: #création de la classe
 
+
 #initialisation de l'objet
     def __init__(self, *elements):
         self.list = [None, None] #inititialisation de la liste
@@ -119,23 +120,25 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
-    
+
     def __str__(self):
         suivant = self.list #suivant devient la liste
         objet = "|"
         if self.list == [None, None]:
             return f'{objet}{self.list[0]}, {self.list[1]}{objet}'
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
-            if type(suivant[0]) == str:
-                objet += "'" + suivant[0] + "'" + ", "
-            else:
-                objet += str(suivant[0]) + ", "
+            objet += str(suivant[0]) + ", "
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
     
     def __setitem__(self, index, valeur):
         return self.remplacer(index, valeur)
+
+    def __getitem__(self, index):
+        if index > len(self):
+            return None
+        return self.acceder(index)
 
     def __add__(self, x):
         tab = self.copie()
@@ -144,6 +147,8 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         suivant[1] = x.list  #quand suivant à atteind le None, il remplace le dernier élement par la ouvelle liste
         return tab #On retourne la valeur
+
+
 
 a = Liste(1,3,3,5)
 
@@ -165,4 +170,11 @@ print(j)
 c = a + b
 c[0] = 3
 print(c)
+<<<<<<< Updated upstream
 print(c[2])
+=======
+y = c.vers_liste()
+print(y)
+h = c.copie()
+print(h)
+>>>>>>> Stashed changes
