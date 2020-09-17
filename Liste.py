@@ -31,6 +31,8 @@ class Liste: #création de la classe
 #inserer un élément dans une liste à un indice donné
     def inserer(self, index, element):
         suivant = self.list #suivant devient la liste
+        if index > len(suivant):
+            return
         for _ in range(index-1): #on atteind le
             suivant = suivant[1] #bon rang
         suivant[1] = [element, suivant[1]] #on insère le bon élément à la bonne place
@@ -68,6 +70,8 @@ class Liste: #création de la classe
 #pour remplacer la liste
     def remplacer(self, index, valeur):
         suivant = self.list #On lui donne la valeur de la liste
+        if index > len(suivant):
+            return
         for _ in range(index): #on se déplace
             suivant = suivant[1] #jusqu'à l'élément que l'on veut modifier
         suivant[0] = valeur #et on modifie la valeur
@@ -126,3 +130,25 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         suivant[1] = x.list  #quand suivant à atteind le None, il remplace le dernier élement par la ouvelle liste
         return tab #On retourne la valeur
+
+a = Liste(1,3,3,5)
+
+b = Liste(7,9,11,11)
+j = Liste( 1,2)
+print(a, b, j)
+a.supprimer_val(3)
+print(a)
+b.supprimer_ind(3)
+print(b)
+b.ajouter(13)
+print(b)
+b.copie()
+b.inserer(3,12)
+print(b)
+b.remplacer(3,'douze')
+print(b)
+j.vider()
+print(j)
+c = a + b
+print(c)
+len(c)
