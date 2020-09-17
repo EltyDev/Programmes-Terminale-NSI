@@ -127,7 +127,10 @@ class Liste: #création de la classe
         if self.list == [None, None]:
             return f'{objet}{self.list[0]}, {self.list[1]}{objet}'
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
-            objet += str(suivant[0]) + ", "
+            if type(suivant[0]) == str:
+                objet += "'" + suivant[0] + "'" + ", "
+            else:
+                objet += str(suivant[0]) + ", "
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
