@@ -168,13 +168,9 @@ print(b)
 j.vider()
 print(j)
 c = a + b
-c[0] = 3
 print(c)
-<<<<<<< Updated upstream
-print(c[2])
-=======
 y = c.vers_liste()
 print(y)
 h = c.copie()
 print(h)
->>>>>>> Stashed changes
+
