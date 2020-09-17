@@ -5,7 +5,7 @@ class Liste: #création de la classe
     def __init__(self, *elements):
         self.list = [None, None] #inititialisation de la liste
         for element in elements: #pour chaque élémment de la liste
-            if type(element) == list:
+            if type(element) == list or type(element) == tuple:
                 for element1 in element:
                     if self.list[0] == None: #si le 1er élément la liste est vide
                         self.list[0] = element1 #le 1er élement de la liste devient élément
@@ -159,4 +159,5 @@ j.vider()
 print(j)
 c = a + b
 print(c)
-len(c)
+y = c.vers_liste()
+print(y)
