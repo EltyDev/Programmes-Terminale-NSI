@@ -101,6 +101,14 @@ class Liste: #création de la classe
         prems.supprimer_ind(0)
         return prems
     
+    def vers_liste(self):
+        tab = []
+        suivant = self.list #suivant devient la liste
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            tab.append(suivant[0])
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        tab.append(suivant[0])
+        return tab
 
     def __repr__(self):
         suivant = self.list #suivant devient la liste
