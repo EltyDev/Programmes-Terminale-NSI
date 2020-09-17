@@ -1,3 +1,3 @@
 # Programmes
 
-Mes programmes fait en terminale
+Mes programmes fait en terminale en NSI
