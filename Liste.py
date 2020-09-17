@@ -133,6 +133,9 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         objet += str(suivant[0]) + "|"
         return f'{objet}'
+    
+    def __setitem__(self, index, valeur):
+        return self.remplacer(index, valeur)
 
     def __add__(self, x):
         tab = self.copie()
@@ -160,6 +163,6 @@ print(b)
 j.vider()
 print(j)
 c = a + b
+c[0] = 3
 print(c)
-y = c.vers_liste()
-print(y)
+print(c[2])
