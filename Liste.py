@@ -31,7 +31,7 @@ class Liste: #création de la classe
 #inserer un élément dans une liste à un indice donné
     def inserer(self, index, element):
         suivant = self.list #suivant devient la liste
-        if index > len(suivant):
+        if index > len(self):
             return
         for _ in range(index-1): #on atteind le
             suivant = suivant[1] #bon rang
@@ -70,7 +70,7 @@ class Liste: #création de la classe
 #pour remplacer la liste
     def remplacer(self, index, valeur):
         suivant = self.list #On lui donne la valeur de la liste
-        if index > len(suivant):
+        if index > len(self):
             return
         for _ in range(index): #on se déplace
             suivant = suivant[1] #jusqu'à l'élément que l'on veut modifier
@@ -92,7 +92,7 @@ class Liste: #création de la classe
     def vider(self):
         self.list = [None, None] #on remet à zéro la valeur de la liste
 
-    def copie(self):
+    def copie1(self):
         tab = []
         suivant = self.list #suivant devient la liste
         while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
@@ -100,6 +100,16 @@ class Liste: #création de la classe
             suivant = suivant[1] #suivant avance dans la liste chainée
         tab.append(suivant[0])
         return Liste(tab)
+
+    def copie(self):
+        prems = Liste()
+        suivant = self.list #suivant devient la liste
+        while suivant[1] != None: #tant que le deuxième émént du duo n'est pas None
+            prems.ajouter(suivant[0])
+            suivant = suivant[1] #suivant avance dans la liste chainée
+        prems.supprimer_ind(0)
+        return prems
+    
 
     def __repr__(self):
         suivant = self.list #suivant devient la liste
@@ -142,7 +152,6 @@ b.supprimer_ind(3)
 print(b)
 b.ajouter(13)
 print(b)
-b.copie()
 b.inserer(3,12)
 print(b)
 b.remplacer(3,'douze')
