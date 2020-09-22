@@ -10,6 +10,8 @@ class Pile:
         self.valeur.insert(0, valeur)
 
     def depiler(self):
+        if not self.valeur:
+            return None
         valeur = self.valeur[0]
         self.valeur.pop(0)
         return valeur

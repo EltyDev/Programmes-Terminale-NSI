@@ -9,6 +9,8 @@ class File:
         self.valeur.append(valeur)
 
     def sortir(self):
+        if not self.valeur:
+            return None
         valeur = self.valeur[0]
         self.valeur.pop(0)
         return valeur
