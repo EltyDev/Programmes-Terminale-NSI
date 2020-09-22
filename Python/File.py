@@ -1,19 +1,19 @@
-class Pile:
+class File:
 
     def __init__(self, *elements):
         self.valeur= []
         for element in elements:
             self.valeur.append(element)
 
-    def empiler(self, valeur):
-        self.valeur.insert(0, valeur)
+    def entrer(self, valeur):
+        self.valeur.append(valeur)
 
-    def depiler(self):
-        valeur = self.valeur[-1]
-        self.valeur.pop()
+    def sortir(self):
+        valeur = self.valeur[0]
+        self.valeur.pop(0)
         return valeur
 
-    def pile_est_vide(self):
+    def file_est_vide(self):
         if len(self) == 0:
             return True
         else:
