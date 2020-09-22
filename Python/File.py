@@ -6,11 +6,11 @@ class File:
             self.valeur.append(element)
 
     def entrer(self, valeur):
-        self.valeur.append(valeur)
+        self.valeur.insert(0, valeur)
 
     def sortir(self):
-        valeur = self.valeur[0]
-        self.valeur.pop(0)
+        valeur = self.valeur[-1]
+        self.valeur.pop()
         return valeur
 
     def file_est_vide(self):
@@ -20,7 +20,13 @@ class File:
             return False
 
     def __repr__(self):
-        return f'{self.valeur}'
+        valeur = ""
+        for element in self.valeur:
+            if element == self.valeur[-1]:
+                valeur += str(element)
+            else:
+                valeur += str(element) + ", "
+        return valeur
 
     def __len__(self):
         return len(self.valeur)
