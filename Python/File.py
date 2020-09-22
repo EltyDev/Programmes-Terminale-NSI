@@ -23,8 +23,8 @@ class File:
 
     def __repr__(self):
         valeur = ""
-        for element in self.valeur:
-            if element == self.valeur[-1]:
+        for index, element in enumerate(self.valeur):
+            if index == len(self.valeur)-1:
                 valeur += str(element)
             else:
                 valeur += str(element) + ", "
