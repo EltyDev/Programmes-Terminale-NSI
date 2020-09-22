@@ -1,4 +1,4 @@
-class Pile:
+class File:
 
     def __init__(self, *elements):
         self.valeur= []
