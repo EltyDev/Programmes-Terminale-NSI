@@ -16,7 +16,7 @@ class File:
         return valeur
 
     def file_est_vide(self):
-        if len(self) == 0:
+        if not self.valeur:
             return True
         else:
             return False
