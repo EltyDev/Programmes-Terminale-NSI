@@ -60,8 +60,8 @@ class Liste: #création de la classe
     def supprimer_ind(self, index):
         suivant = self.list #suivant devient la liste
         if index == 0:
-            suivant[0] = suivant[1][0]
-            suivant[1] = suivant[1][1]
+            suivant[0] = list(suivant[1])[0]
+            suivant[1] = list(suivant[1])[1]
         else:
             for _ in range(index-1): #on se déplace
                 suivant = suivant[1] #jusqu'à l'élément que l'on veut supprimer
@@ -168,13 +168,13 @@ b.supprimer_ind(1)
 print(b)
 b.supprimer_ind(3)
 print(b)
-b.supprimer_ind(4)
+b.supprimer_ind(2)
 print(b)
 a.supprimer_val(3)
 print(a)
 b.ajouter(13)
 print(b)
-b.remplacer(3,'douze')
+b.remplacer(2,'douze')
 print(b)
 j.vider()
 print(j)
