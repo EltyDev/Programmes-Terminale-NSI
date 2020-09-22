@@ -4,6 +4,7 @@ class Pile:
         self.valeur= []
         for element in elements:
             self.valeur.append(element)
+        self.valeur.reverse()
 
     def empiler(self, valeur):
         self.valeur.insert(0, valeur)

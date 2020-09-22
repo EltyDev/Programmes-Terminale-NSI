@@ -6,11 +6,11 @@ class File:
             self.valeur.append(element)
 
     def entrer(self, valeur):
-        self.valeur.insert(0, valeur)
+        self.valeur.append(valeur)
 
     def sortir(self):
-        valeur = self.valeur[-1]
-        self.valeur.pop()
+        valeur = self.valeur[0]
+        self.valeur.pop(0)
         return valeur
 
     def file_est_vide(self):
