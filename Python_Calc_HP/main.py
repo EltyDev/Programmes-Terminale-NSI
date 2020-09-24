@@ -2,6 +2,9 @@ from Pile import *
 pile = Pile()
 
 while True:
+    print('')
+    print(pile)
+    print('')
     resultat = 0
     prop = input('')
     try:
@@ -19,9 +22,15 @@ while True:
                 resultat = pile.valeur[0] + pile.valeur[1]
                 print(resultat)
                 pile.empiler(resultat)
-            pass
+                continue
         elif  prop == '-':
-            pass
+            if len(pile) <= 1:
+                print("Erreur: Il n'y pas ou qu'une valeur dans la calculatrice")
+                continue
+            else:
+                resultat = pile.valeur[0] - pile.valeur[1]
+                print(resultat)
+                pile.empiler(resultat)            
         elif prop == '*':
             pass
         elif prop == '/':
