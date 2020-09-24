@@ -6,6 +6,7 @@ while True:
     prop = input('')
     try:
         prop = int(prop)
+        pile.empiler(prop)
     except:
         if prop == 'q':
            break
