@@ -1,51 +1,36 @@
 from Pile import *
-pile = Pile()
+from math import *
+
+operation, fonction, pile = ('+', '-', '*', '/', '**'), ('sin', 'cos', 'tan', 'exp', 'log', 'log10'), Pile()
 
 while True:
-    print('')
-    print(pile)
-    print('')
-    resultat = 0
-    prop = input('')
+    prop = input('')   
     try:
-        prop = int(prop)
+        prop = long(prop)
         pile.empiler(prop)
     except:
-        if prop == 'q':
-           break
-        elif prop == '+':
+        if prop in operation:
             if len(pile) <= 1:
-                print(pile.valeur[0])
-                pile.empiler(pile.valeur[0])
+                print(pile)
                 continue
             else:
-                resultat = pile.valeur[0] + pile.valeur[1]
+                resultat = eval(str(pile.valeur[1]) + prop + str(pile.valeur[0]))
+                pile.depiler()
+                pile.depiler()
+                pile.empiler(int(resultat))
                 print(resultat)
-                pile.empiler(resultat)
                 continue
-        elif  prop == '-':
-            if len(pile) <= 1:
-                print("Erreur: Il n'y pas ou qu'une valeur dans la calculatrice")
+        elif prop in fonction:
+            if len(pile) >=2:
+                print("Erreur : Apprend à compter")
                 continue
             else:
-                resultat = pile.valeur[0] - pile.valeur[1]
+                resultat = eval(prop + '(' + str(pile.valeur[0]) + ')')
+                pile.depiler()
+                pile.depiler()
+                pile.empiler(int(resultat))
                 print(resultat)
-                pile.empiler(resultat)            
-        elif prop == '*':
-            pass
-        elif prop == '/':
-            pass
-        elif prop == '**':
-            pass
-        elif prop == 'sin':
-            pass
-        elif prop == 'cos':
-            pass
-        elif prop == 'tan':
-            pass
-        elif prop == 'exp':
-            pass
-        elif prop == 'log':
-            pass
-        elif prop == 'log10':
-            pass
+                continue
+
+
+
