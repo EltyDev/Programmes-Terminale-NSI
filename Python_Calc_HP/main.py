@@ -1,6 +1,6 @@
 from Pile import *
 pile = Pile()
-gezrgegzeggzgzegzegzegzegzegzezgegezzegzeg
+
 while True:
     print('')
     print(pile)
