@@ -4,14 +4,14 @@ from math import *
 operation, fonction, pile = ('+', '-', '*', '/', '**'), ('sin', 'cos', 'tan', 'exp', 'log', 'log10'), Pile()
 
 while True:
-    prop = input('')   
+    prop = input('?')   
     try:
-        int(prop)
+        float(prop)
         pile.empiler(prop)
     except:
         if prop in operation:
             if len(pile) <= 1:
-                print(pile)
+                print("Erreur : Vous ne pouvez pas faire d'opération avec 1 ou moins de 1 élement")
                 continue
             else:
                 try:
@@ -19,7 +19,7 @@ while True:
                     pile.depiler()
                     pile.depiler()
                     pile.empiler(float(resultat))
-                    print(resultat)
+                    print(pile)
                 except:
                     print("Erreur: Impossible")
                     pile.depiler()
@@ -27,7 +27,7 @@ while True:
                 continue
         elif prop in fonction:
             if len(pile) < 1:
-                print("Erreur : Vous ne pouvez pas faire d'opération avec 1 ou moins de 1 élement")
+                print("Erreur : Vous ne pouvez pas faire d'opération avec moins de 1 élement")
                 continue
             else:
                 try:
@@ -35,7 +35,7 @@ while True:
                     pile.depiler()
                     pile.depiler()
                     pile.empiler(float(resultat))
-                    print(resultat)
+                    print(pile)
                 except:
                     print("Erreur: Impossible")
                     pile.depiler()
@@ -45,5 +45,7 @@ while True:
             break
         elif prop == 'r':
             pile = Pile()
+        elif prop == '':
+            print('\n' + str(pile) + '\n')
         else:
             print("Erreur: Je suis pas programmé pour cela")

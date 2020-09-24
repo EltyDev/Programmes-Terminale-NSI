@@ -24,6 +24,8 @@ class Pile:
 
     def __repr__(self):
         valeur = ""
+        if len(self.valeur) == 0:
+            return str(self.valeur[0])
         for element in self.valeur:
             valeur += str(element) + "\n" 
         return valeur
@@ -33,6 +35,8 @@ class Pile:
 
     def __str__(self):
         valeur = ""
+        if len(self.valeur) == 0:
+            return str(self.valeur[0])
         for element in self.valeur:
             valeur += str(element) + "\n" 
         return valeur
