@@ -30,7 +30,11 @@ while True:
                 pile.empiler(int(resultat))
                 print(resultat)
                 continue
+        elif prop == 'q':
+            break
+        elif prop == 'r':
+            pile = Pile()
         else:
-            print("IMPOSSIBLE")
+            print("Erreur: Je suis pas programmé pour cela")
 
 
