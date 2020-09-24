@@ -4,7 +4,7 @@ from math import *
 operation, fonction, pile = ('+', '-', '*', '/', '**'), ('sin', 'cos', 'tan', 'exp', 'log', 'log10'), Pile()
 
 while True:
-    prop = input('?')   
+    prop = input('? ')   
     try:
         float(prop)
         pile.empiler(prop)
