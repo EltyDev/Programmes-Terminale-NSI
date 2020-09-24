@@ -1,6 +1,6 @@
 from Pile import *
 pile = Pile()
-
+gezrgegzeggzgzegzegzegzegzegzezgegezzegzeg
 while True:
     resultat = 0
     prop = input('')
