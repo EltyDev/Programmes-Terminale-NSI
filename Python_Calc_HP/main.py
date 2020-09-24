@@ -5,10 +5,9 @@ operation, fonction, pile = ('+', '-', '*', '/', '**'), ('sin', 'cos', 'tan', 'e
 
 while True:
     prop = input('')   
-    try:
-        prop = long(prop)
+    if prop.isdigit():
         pile.empiler(prop)
-    except:
+    else:
         if prop in operation:
             if len(pile) <= 1:
                 print(pile)
@@ -31,6 +30,7 @@ while True:
                 pile.empiler(int(resultat))
                 print(resultat)
                 continue
-
+        else:
+            print("IMPOSSIBLE")
 
 
