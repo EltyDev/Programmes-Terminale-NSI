@@ -12,12 +12,13 @@ while True:
            break
         elif prop == '+':
             if len(pile) <= 1:
-                print("Erreur")
+                print(pile.valeur[0])
+                pile.empiler(pile.valeur[0])
                 continue
             else:
-                for element in pile.value:
-                    resultat += element
-                print(resultat) 
+                resultat = pile.valeur[0] + pile.valeur[1]
+                print(resultat)
+                pile.empiler(resultat)
             pass
         elif  prop == '-':
             pass
