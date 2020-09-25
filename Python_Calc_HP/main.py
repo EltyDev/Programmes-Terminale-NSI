@@ -4,9 +4,9 @@ from math import *
 operation, fonction, pile = ('+', '-', '*', '/', '**'), ('sin', 'cos', 'tan', 'exp', 'log', 'log10'), Pile()
 
 while True:
-    prop = input('$ ')   
+    prop = input('? ')   
     try:
-        float(prop)
+        prop = float(prop)
         pile.empiler(prop)
     except:
         if prop in operation:
@@ -19,15 +19,15 @@ while True:
                     pile.depiler()
                     pile.depiler()
                     pile.empiler(float(resultat))
-                    print(pile)
+                    print('\n' + str(resultat) + '\n')
                 except:
-                    print("Erreur: Impossible")
+                    print("\nErreur: Impossible\n")
                     pile.depiler()
                     pile.depiler()
                 continue
         elif prop in fonction:
             if len(pile) < 1:
-                print("Erreur : Vous ne pouvez pas faire d'opération avec moins de 1 élement")
+                print("\nErreur : Vous ne pouvez pas faire d'opération avec moins de 1 élement\n")
                 continue
             else:
                 try:
@@ -35,9 +35,9 @@ while True:
                     pile.depiler()
                     pile.depiler()
                     pile.empiler(float(resultat))
-                    print(pile)
+                    print('\n' + str(resultat) + '\n')
                 except:
-                    print("Erreur: Impossible")
+                    print("\nErreur: Impossible\n")
                     pile.depiler()
                     pile.depiler()
                 continue
@@ -46,6 +46,8 @@ while True:
         elif prop == 'r':
             pile = Pile()
         elif prop == '':
-            print('\n' + str(pile) + '\n')
+            print('')
+            pile.voir()
         else:
-            print("Erreur: Je suis pas programmé pour cela")
+            print("\nErreur: Je suis pas programmé pour cela\n")
+            pile.depiler()

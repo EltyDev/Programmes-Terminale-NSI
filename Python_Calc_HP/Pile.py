@@ -23,20 +23,22 @@ class Pile:
             return False
 
     def __repr__(self):
+        return f'{self.valeur}'
+
+    def voir(self):
         valeur = ""
         if len(self.valeur) == 0:
-            return str(self.valeur[0])
-        for element in self.valeur:
-            valeur += str(element) + "\n" 
-        return valeur
+            print('1 : ' + str(self.valeur[0]))
+        else:
+            for index, element in enumerate(self.valeur):
+                if index == len(self):
+                    valeur += str(index+1) + " : " + str(element)
+                else:
+                    valeur += str(index+1) + " : " + str(element) + "\n" 
+            print(valeur)
 
     def __len__(self):
         return len(self.valeur)
 
     def __str__(self):
-        valeur = ""
-        if len(self.valeur) == 0:
-            return str(self.valeur[0])
-        for element in self.valeur:
-            valeur += str(element) + "\n" 
-        return valeur
+        return str(self.valeur)
