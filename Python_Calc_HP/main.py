@@ -8,6 +8,8 @@ while True:
     try:
         prop = float(prop)
         pile.empiler(prop)
+        print("")
+        pile.voir()
     except:
         if prop in operation:
             if len(pile) <= 1:
