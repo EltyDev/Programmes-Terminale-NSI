@@ -8,16 +8,12 @@ while True: #On brée une boucle infinie
     try:
         prop = float(prop) #On regarde si c'est une on peut la transformer en nombre décimal
         pile.empiler(prop) #Et si c'est le cas, on l'empile
-<<<<<<< Updated upstream
         print("")
         pile.voir()
-=======
->>>>>>> Stashed changes
     except: #Sinon
         if prop in operation: #Si la proposition est dans les la variable opérations; 
             if len(pile) <= 1:  #et si la longueur de la pile est inférieure ou égale à 1
                 print("\nErreur : Vous ne pouvez pas faire d'opération avec 1 ou moins de 1 élement\n") #le programme ne fonctionne pas, et cela retourne un erreur
-                continue#on reviens au départ
             else: # si la longueur des bonne
                 try: #on essaye de voir si l'opération est faisable
                     resultat = eval(str(pile.valeur[1]) + prop + str(pile.valeur[0])) #si c'est faisable, on l'exécute
@@ -25,16 +21,13 @@ while True: #On brée une boucle infinie
                     pile.depiler()
                     pile.empiler(float(resultat)) #puis on empile le résultat
                     print('\n' + str(resultat) + '\n')
-                    continue #on reviens au départ
                 except:# si l'opération est impossible (division par zéro par exemple)
                     print("\nErreur: Impossible\n") #on retourne le fait que ce soit impossible
                     pile.depiler()# et on permet à l'utilisateur de se corriger
                     pile.depiler()
-                continue #on reviens au départ
         elif prop in fonction: #si la proposition est dans les fonctions
             if len(pile) < 1: # et que la pile est vide 
-                print("\nErreur : Vous ne pouvez pas faire d'opération avec moins de 1 élement\n"
-                continue #on reviens ou départ 
+                print("\nErreur : Vous ne pouvez pas faire d'opération avec moins de 1 élement\n")
             else:# si la pile à au moins un élément
                 try:#on essaye si la fonction est possible 
                     resultat = eval(prop + '(' + str(pile.valeur[0]) + ')')
@@ -46,7 +39,6 @@ while True: #On brée une boucle infinie
                     print("\nErreur: Impossible\n")#on revoies que c'est impossible
                     pile.depiler()#et on laisse l'utilisateur se corriger 
                     pile.depiler()
-                continue
         elif prop == 'q':
             break #si la proposition est 'q', on quitte le programme
         elif prop == 'r': #si c'est 'r' on remet la pile à zéro
