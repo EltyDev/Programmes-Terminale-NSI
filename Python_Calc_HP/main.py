@@ -8,8 +8,11 @@ while True: #On brée une boucle infinie
     try:
         prop = float(prop) #On regarde si c'est une on peut la transformer en nombre décimal
         pile.empiler(prop) #Et si c'est le cas, on l'empile
+<<<<<<< Updated upstream
         print("")
         pile.voir()
+=======
+>>>>>>> Stashed changes
     except: #Sinon
         if prop in operation: #Si la proposition est dans les la variable opérations; 
             if len(pile) <= 1:  #et si la longueur de la pile est inférieure ou égale à 1
