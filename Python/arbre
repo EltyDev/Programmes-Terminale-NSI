@@ -1,0 +1,5 @@
+digraph {
+	e -> f
+	e -> g
+	f -> 4
+}
