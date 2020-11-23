@@ -58,9 +58,10 @@ while True:
             print("\nVous n'avez pas de base de donnée ouverte.")
         else:
             fermeture_base(connexion, curseur)
+            print("\nLa base de donnée a été fermée avec succès.")
     elif commande == "e":
         modification(connexion)
-        print("\nLa base donnée a été sauvegardé avec succès.")
+        print("\nLa base de donnée a été sauvegardé avec succès.")
     elif commande == "r":
         if connexion == None:  # Si aucune base est ouverte
             print("\nVous n'avez pas de base de donnée ouverte.")
