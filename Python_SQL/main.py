@@ -46,8 +46,13 @@ def affichage(liste_resultat):
 while True:
     commande = input("\n$ ")
     if commande == "o":
-        fichier = input("$ Nom du fichier : ") # On demande le nom de la base de donnée
-        connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
+        while connexion == None:
+            fichier = input("$ Nom du fichier : ") # On demande le nom de la base de donnée
+            if fichier[-3:] == ".db":
+                print("\nLa base de donnée a été ouverte/créée avec succès.")    
+                connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
+            else:
+                print("\nLa base de donnée n'est pas dans une extension conforme, veuillez réessayer.\n")
     elif commande == "f":
         if connexion == None: # Si aucune base est ouverte
             print("\nVous n'avez pas de base de donnée ouverte.")
@@ -55,16 +60,19 @@ while True:
             fermeture_base(connexion, curseur)
     elif commande == "e":
         modification(connexion)
+        print("\nLa base donnée a été sauvegardé avec succès.")
     elif commande == "r":
         if connexion == None:  # Si aucune base est ouverte
             print("\nVous n'avez pas de base de donnée ouverte.")
         else:
-            requete_sql = input("$ Requête SQL : ") # On demande la requête SQL voulu
-            try: # On essaye les 2 lignes suivant car elles sont suceptible de crée une erreur
-                sortie = requete(requete_sql, curseur) # On envoie la requête
-                print(affichage(sortie)) # On affiche la requête formaté
-            except Exception as erreur: # Si on a une erreur, on la met dans la variable error
-                print('\nRequête SQL invalide : "' + str(erreur) + '"') # Et on affiche l'erreur
+            sortie = None
+            while sortie == None:
+                requete_sql = input("$ Requête SQL : ") # On demande la requête SQL voulu
+                try: # On essaye les 2 lignes suivant car elles sont suceptible de crée une erreur
+                    sortie = requete(requete_sql, curseur) # On envoie la requête
+                    print(affichage(sortie)) # On affiche la requête formaté
+                except Exception as erreur: # Si on a une erreur, on la met dans la variable error
+                    print('\nRequête SQL invalide : "' + str(erreur) + '"\n') # Et on affiche l'erreur
     elif commande == "q":
         if connexion != None: # Si une base est encore ouverte
             print("\nVous devez fermez la base de donnée avant de quitter.")
