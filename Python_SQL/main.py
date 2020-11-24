@@ -10,7 +10,7 @@ def ouverture_base(fichier):
 def fermeture_base(connexion, curseur):
     curseur.close() # On ferme avant le curseur
     connexion.close() # Puis la base 
-    curseur, connexion = None, None # Et enfin on remet à zéro les variables
+    
 
 def requete(requete_sql, curseur):
     curseur.execute(requete_sql) # On exécute la requête
@@ -46,22 +46,29 @@ def affichage(liste_resultat):
 while True:
     commande = input("\n$ ")
     if commande == "o":
-        while connexion == None:
-            fichier = input("$ Nom du fichier : ") # On demande le nom de la base de donnée
-            if fichier[-3:] == ".db":
-                print("\nLa base de donnée a été ouverte/créée avec succès.")    
-                connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
-            else:
-                print("\nLa base de donnée n'est pas dans une extension conforme, veuillez réessayer.\n")
+        if connexion != None:
+            print("\nVous devez fermer la base de donée avant d'en ouvrir une autreq.")
+        else:
+            while connexion == None:
+                fichier = input("$ Nom du fichier : ") # On demande le nom de la base de donnée
+                if fichier[-3:] == ".db":
+                    print("\nLa base de donnée a été ouverte/créée avec succès.")    
+                    connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
+                else:
+                    print("\nLa base de donnée n'est pas dans une extension conforme, veuillez réessayer.\n")
     elif commande == "f":
         if connexion == None: # Si aucune base est ouverte
             print("\nVous n'avez pas de base de donnée ouverte.")
         else:
             fermeture_base(connexion, curseur)
+            curseur, connexion = None, None # Et enfin on remet à zéro les variables
             print("\nLa base de donnée a été fermée avec succès.")
     elif commande == "e":
-        modification(connexion)
-        print("\nLa base de donnée a été sauvegardé avec succès.")
+        if connexion == None:
+            print("\nVous n'avez pas de base de donnée ouverte.")    
+        else:    
+            modification(connexion)
+            print("\nLa base de donnée a été sauvegardé avec succès.")
     elif commande == "r":
         if connexion == None:  # Si aucune base est ouverte
             print("\nVous n'avez pas de base de donnée ouverte.")
@@ -81,4 +88,3 @@ while True:
             break # On sort de la boucle
     else:
         print("\nCommande inconnue.")
-
