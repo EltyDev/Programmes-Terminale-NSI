@@ -1,5 +1,5 @@
 from sqlite3 import *
-
+from colorama import *
 connexion, curseur = None, None # On définis ces variables en dehors de la boucle infini pour pouvoir les stocké à l'extérieur d'elle
 
 def ouverture_base(fichier):
@@ -47,44 +47,44 @@ while True:
     commande = input("\n$ ")
     if commande == "o":
         if connexion != None:
-            print("\nVous devez fermer la base de donée avant d'en ouvrir une autreq.")
+            print(Fore.RED + Style.NORMAL +"\nVous devez fermer la base de donée avant d'en ouvrir une autre."+Style.RESET_ALL+ '\n')
         else:
             while connexion == None:
-                fichier = input("$ Nom du fichier : ") # On demande le nom de la base de donnée
+                fichier = input(Fore.CYAN + Style.NORMAL +"$ Nom du fichier : ") # On demande le nom de la base de donnée
                 if fichier[-3:] == ".db":
-                    print("\nLa base de donnée a été ouverte/créée avec succès.")    
+                    print(Fore.GREEN + Style.NORMAL +"\nLa base de donnée a été ouverte/créée avec succès."+Style.RESET_ALL+ '\n')    
                     connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
                 else:
-                    print("\nLa base de donnée n'est pas dans une extension conforme, veuillez réessayer.\n")
+                    print(Fore.RED + Style.NORMAL +"\nLa base de donnée n'est pas dans une extension conforme, veuillez réessayer."+Style.RESET_ALL+"\n")
     elif commande == "f":
         if connexion == None: # Si aucune base est ouverte
-            print("\nVous n'avez pas de base de donnée ouverte.")
+            print(Fore.RED + Style.NORMAL +"\nVous n'avez pas de base de donnée ouverte."+Style.RESET_ALL+ '\n')
         else:
             fermeture_base(connexion, curseur)
             curseur, connexion = None, None # Et enfin on remet à zéro les variables
-            print("\nLa base de donnée a été fermée avec succès.")
+            print(Fore.GREEN + Style.NORMAL +"\nLa base de donnée a été fermée avec succès."+Style.RESET_ALL+ '\n')
     elif commande == "e":
         if connexion == None:
-            print("\nVous n'avez pas de base de donnée ouverte.")    
+            print(Fore.RED + Style.NORMAL +"\nVous n'avez pas de base de donnée ouverte."+Style.RESET_ALL+"\n")    
         else:    
             modification(connexion)
-            print("\nLa base de donnée a été sauvegardé avec succès.")
+            print(Fore.GREEN + Style.NORMAL +"\nLa base de donnée a été sauvegardé avec succès."+Style.RESET_ALL+ '\n')
     elif commande == "r":
         if connexion == None:  # Si aucune base est ouverte
-            print("\nVous n'avez pas de base de donnée ouverte.")
+            print(Fore.RED + Style.NORMAL +"\nVous n'avez pas de base de donnée ouverte."+Style.RESET_ALL+"\n")
         else:
             sortie = None
             while sortie == None:
-                requete_sql = input("$ Requête SQL : ") # On demande la requête SQL voulu
+                requete_sql = input(Fore.CYAN + Style.NORMAL +"$ Requête SQL : "+Style.RESET_ALL+ '\n') # On demande la requête SQL voulu
                 try: # On essaye les 2 lignes suivant car elles sont suceptible de crée une erreur
                     sortie = requete(requete_sql, curseur) # On envoie la requête
                     print(affichage(sortie)) # On affiche la requête formaté
                 except Exception as erreur: # Si on a une erreur, on la met dans la variable error
-                    print('\nRequête SQL invalide : "' + str(erreur) + '"\n') # Et on affiche l'erreur
+                    print(Fore.RED + Style.NORMAL +'\nRequête SQL invalide : "' + str(erreur) +Style.RESET_ALL+ '\n') # Et on affiche l'erreur
     elif commande == "q":
         if connexion != None: # Si une base est encore ouverte
-            print("\nVous devez fermez la base de donnée avant de quitter.")
+            print(Fore.RED + Style.NORMAL +"\nVous devez fermez la base de donnée avant de quitter."+Style.RESET_ALL+"\n")
         else:
             break # On sort de la boucle
     else:
-        print("\nCommande inconnue.")
+        print(Fore.RED + Style.NORMAL +"\nCommande inconnue."+Style.RESET_ALL+"\n")
