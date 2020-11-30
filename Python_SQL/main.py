@@ -89,7 +89,7 @@ while True:
             print(Fore.RED + Style.NORMAL +"\nVous devez fermer la base de donée avant d'en ouvrir une autre."+Style.RESET_ALL+ '\n')
         else:
             while connexion == None:
-                fichier = input(Fore.CYAN + Style.NORMAL +"$ Nom du fichier : ") # On demande le nom de la base de donnée
+                fichier = input(Fore.CYAN + Style.NORMAL +"$ Nom du fichier : " +Style.RESET_ALL) # On demande le nom de la base de donnée
                 if fichier[-3:] == ".db":
                     print(Fore.GREEN + Style.NORMAL +"\nLa base de donnée a été ouverte/créée avec succès."+Style.RESET_ALL+ '\n')    
                     connexion, curseur = ouverture_base(fichier) # On récupère ces deux variables depuis un table
@@ -113,7 +113,7 @@ while True:
             print(Fore.RED + Style.NORMAL +"\nVous n'avez pas de base de donnée ouverte."+Style.RESET_ALL+"\n")
         else:
             sortie = None
-            while sortie == None:
+            while sortie == None or sortie == []:
                 requete_sql = input(Fore.CYAN + Style.NORMAL +"$ Requête SQL : "+Style.RESET_ALL) # On demande la requête SQL voulu
                 try: # On essaye les 2 lignes suivant car elles sont suceptible de crée une erreur
                     sortie = requete(requete_sql, curseur) # On envoie la requête
