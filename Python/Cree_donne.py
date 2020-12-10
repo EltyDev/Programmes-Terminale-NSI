@@ -13,9 +13,9 @@ print(donnees)
 
 def maximum(table):
 	'''
-	Cette fonction donne le maximum d'une liste de nombre
-	Elle prend comme argument 'table' une liste
-	Elle retourne un nombre
+	Cette fonction donne le maximum d'une liste de nombre.
+	Elle prend comme argument 'table' une liste.
+	Elle retourne un nombre.
 	'''
 	assert(isinstance(table,list)), "La table doit être une liste." #On vérifie si la variable 'table' est une liste
 	maxi = table[0] #La première valeur de maxi sera la première valeur de la liste
@@ -26,9 +26,9 @@ def maximum(table):
 
 def minimum(table):
 	'''
-	Cette fonction donne le maximum d'une liste de nombre
-	Elle prend comme argument 'table' une liste
-	Elle retourne un nombre
+	Cette fonction donne le maximum d'une liste de nombre.
+	Elle prend comme argument 'table' une liste.
+	Elle retourne un nombre.
 	'''
 	assert(isinstance(table,list)), "La table doit être une liste." #On vérifie si la variable 'table' est une liste
 	mini = table[0] #La première valeur de maxi sera la première valeur de la liste
@@ -39,9 +39,9 @@ def minimum(table):
 
 def rechercher(table, valeur):
 	'''
-	Cette fonction donne une liste contenant les indexs des occurence d'une valeur dans une liste
-	Elle prend comme argument 'table' une liste et valeur un nombre entier naturel
-	Elle retourne une liste
+	Cette fonction donne une liste contenant les indexs des occurence d'une valeur dans une liste.
+	Elle prend comme argument 'table' une liste et valeur un nombre entier naturel.
+	Elle retourne une liste même si elle est vide.
 	'''
 	assert(isinstance(table,list)), "La table doit être une liste." #On vérifie si la variable 'table' est une liste
 	assert(isinstance(valeur,int)), "La valeur doit être un nombre entier naturel." #On vérifie si la variable 'valeur' est un nombre entier naturel
@@ -50,3 +50,9 @@ def rechercher(table, valeur):
 		if table[index] == valeur: #Si la valeur du tableau est égale à la valeur donnée
 			occurrence.append(index) #On ajoute l'index de la valeur au tableau
 	return occurrence #On retourne les occurences
+
+print(maximum(donnees))
+print(minimum(donnees))
+print(rechercher(donnees, 434))
+print(rechercher(donnees, 4000))
+print(maximum(['Octet','Bit']))
